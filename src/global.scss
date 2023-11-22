@@ -1,0 +1,134 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import '~animate.css/animate.min.css';
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #3498db;
+    font-style: italic;
+
+
+}
+
+
+.parent {
+    margin: auto;
+    display: flex;
+    height: 90%;
+    width: 90%;
+}
+
+.child {
+    margin: auto;
+    /* Magic! */
+    max-width: 100%;
+    max-height: 100%;
+    color: black;
+}
+
+.espaceT {
+    margin-top: 80px;
+}
+
+.cart-modal {
+    --height: 50%;
+    --border-radius: 10px;
+    padding: 25px;
+}
+
+.box {
+    display: flex;
+    position: relative;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+}
+
+
+
+
+div {
+    position: relative;
+    align-content: center;
+    font-weight: 100;
+}
+
+
+ion-card {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+    background: rgba(255, 255, 255, 0.9); /* Couleur blanche avec une opacité de 0.9 (90%) */
+    border: 2px solid #e74c3c;
+}
+
+
+ion-content,
+ion-menu {
+  --background: url('../src/assets/ocean.jpg') no-repeat center center / cover;
+  background-size: cover;
+  font-family: 'Pacifico', sans-serif;
+  color: black;
+  font-weight: 100;
+}
+
+ion-button {
+  background-color: rgba(0, 0, 0, 0.7); /* Rouge vif, remplacez par la couleur de votre choix */
+  color: white;
+  border: 2px solid rgba(0, 0, 0, 0);
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+ion-button:hover {
+  background-color: rgba(192, 57, 43, 0.5) /* Rouge plus foncé au survol, remplacez par la couleur de votre choix */
+}
+
+ion-card {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+  background: rgba(255, 255, 255, 0); /* Couleur blanche avec une opacité de 0.8 (80%) */
+  border: none; /* Vous pouvez ajuster cela selon vos besoins */
+}
+
+
+ion-menu::part(backdrop) {
+  background-color: rgba(52, 152, 219, 0.5);
+}
+
+ion-menu::part(container) {
+  border-radius: 20px;
+  box-shadow: 4px 0px 16px rgba(52, 152, 219, 0.5);
+
+}
+
+.menu-inner {
+  justify-content: start;
+}

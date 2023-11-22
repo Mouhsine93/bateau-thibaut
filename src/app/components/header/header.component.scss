@@ -1,0 +1,97 @@
+// Colors
+$primary-color: #9a9aff;
+$secondary-color: #c4f6fa;
+$background-color: #ecf0f1;
+$text-color: #333;
+$cart-color: #e44d26;
+
+ion-col {
+  text-align: center;
+
+  background: url('../../../assets/ocean.jpg') no-repeat center center / cover;
+}
+ion-menu-button ion-icon {
+  font-size: 60px;
+  color: #ffffff; /* Ajustez la taille selon vos besoins */
+}
+
+ion-toolbar ion-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  gap: 10px;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+
+.head {
+  border-color: transparent !important;
+}
+
+.align-center {
+  text-align: center;
+  padding-top: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; /* Adjust as needed */
+}
+
+ion-menu-toggle,
+ion-item,
+ion-label {
+  color: var(--text-color);
+}
+
+ion-toolbar {
+  --background: linear-gradient(to right, $primary-color, $secondary-color);
+  --ion-color-base: #ffffff;
+  --ion-color-contrast: #333;
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 100;
+}
+
+ion-title {
+  font-size: 20px;
+}
+
+.cart-length {
+  background-color: $cart-color;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 50%;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 20px;
+  text-align: center;
+}
+
+ion-content {
+  --background: $background-color;
+}
+
+ion-list {
+  padding: 20px;
+}
+
+ion-item {
+  --background: #ffffff;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+ion-label {
+  font-size: 18px;
+  color: $text-color;
+}
+
+ion-item:hover {
+  --background: $background-color;
+}
