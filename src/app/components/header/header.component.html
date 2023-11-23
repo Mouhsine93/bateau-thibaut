@@ -1,34 +1,72 @@
 <ion-toolbar>
   <ion-grid no-padding>
     <ion-row class="container">
-      <ion-col>
-        <img
-          src="./../../../assets/logo_bateau-.png"
-          width="50"
-          height="50"
-          (click)="onGoToHome()"
-        />
+      <ion-col
+        style="
+          background-color: rgba(255, 255, 255, 0.4);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+        (click)="onGoToHome()"
+        class="icon-col"
+      >
+        <img src="../../../assets/logo_bateau-.png" width="50" height="50" />
       </ion-col>
-      <ion-col class="ion-text-center">
+
+      <!-- Ajoutez ces styles dans votre feuille de style CSS -->
+      <style>
+        .icon-col {
+          transition: transform 0.3s ease-in-out;
+          cursor: pointer; /* Ajoutez un pointeur au survol pour indiquer que c'est cliquable */
+        }
+
+        .icon-col:hover {
+          transform: scale(1.1);
+        }
+      </style>
+
+      <ion-col
+        style="
+          background-color: rgba(0, 0, 0, 0.4);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+        (click)="onMenuButtonClick()"
+        class="menu-icon-col"
+      >
         <ion-buttons>
           <ion-menu-button>
             <ion-icon name="boat-sharp"></ion-icon>
           </ion-menu-button>
         </ion-buttons>
       </ion-col>
+
+      <!-- Ajoutez ces styles dans votre feuille de style CSS -->
+      <style>
+        .menu-icon-col {
+          transition: transform 0.3s ease-in-out;
+          cursor: pointer; /* Ajoutez un pointeur au survol pour indiquer que c'est cliquable */
+        }
+
+        .menu-icon-col:hover {
+          transform: scale(1.1);
+        }
+      </style>
     </ion-row>
   </ion-grid>
 </ion-toolbar>
 
 <ion-menu side="end" contentId="main-content">
   <ion-header>
-    <ion-toolbar [color]="color">
+    <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button autoHide="false"
-          ><ion-icon name="boat-outline"></ion-icon
-        ></ion-menu-button>
+        <ion-menu-button autoHide="false">
+          <ion-icon name="boat-outline"></ion-icon>
+        </ion-menu-button>
       </ion-buttons>
-      <ion-title>{{ title }}</ion-title>
+
       <ion-buttons slot="end">
         <ion-button (click)="openCart()" fill="clear">
           <ion-icon name="cart"></ion-icon>
@@ -40,28 +78,17 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content color="">
-    <ion-list>
-      <ion-menu-toggle (click)="close()">
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToHome()">Accueil</ion-label>
-        </ion-item>
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToProduits()">Produits</ion-label>
-        </ion-item>
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToBateaux()">Bateaux</ion-label>
-        </ion-item>
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToRestaurants()">Restaurants</ion-label>
-        </ion-item>
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToRecettes()">Recettes</ion-label>
-        </ion-item>
-        <ion-item color="medium" class="align-center">
-          <ion-label (click)="onGoToContact()">Contact</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
+  <ion-content>
+    <ion-menu-toggle (click)="close()">
+      <ion-item
+        class="menu-item ion-text-center"
+        *ngFor="let menuItem of menuItems"
+        (click)="navigate(menuItem.route)"
+      >
+        <ion-icon slot="start" [name]="getIconName(menuItem.label)"></ion-icon>
+        <ion-label>{{ menuItem.label }}</ion-label>
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-item>
+    </ion-menu-toggle>
   </ion-content>
 </ion-menu>

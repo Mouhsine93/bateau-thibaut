@@ -7,17 +7,12 @@ $cart-color: #e44d26;
 
 ion-col {
   text-align: center;
-
-  background: url('../../../assets/ocean.jpg') no-repeat center center / cover;
+  background-color:  url('../../../assets/ocean.jpg') no-repeat center center / cover;
 }
+
 ion-menu-button ion-icon {
   font-size: 60px;
   color: #ffffff; /* Ajustez la taille selon vos besoins */
-}
-
-ion-toolbar ion-buttons {
-  display: flex;
-  justify-content: center;
 }
 
 .container {
@@ -40,7 +35,7 @@ ion-toolbar ion-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px; /* Adjust as needed */
+  height: 50px; /* Ajustez selon vos besoins */
 }
 
 ion-menu-toggle,
@@ -79,19 +74,17 @@ ion-content {
 }
 
 ion-list {
-  padding: 20px;
+  padding: 0;
 }
 
+// Changez le style des blocs ion-item
 ion-item {
-  --background: #ffffff;
-  border-bottom: 1px solid #bdc3c7;
+  background-color: #3498db; // Couleur de fond pour tous les éléments
+  border: 1px solid #3498db; // Bordure blanche
+  border-radius: 10px; // Coins arrondis
+  margin-bottom: 10px; // Espacement entre les éléments
+  --ion-item-background-hover: #3498db; // Couleur de survol
+  cursor: pointer;
 }
 
-ion-label {
-  font-size: 18px;
-  color: $text-color;
-}
 
-ion-item:hover {
-  --background: $background-color;
-}

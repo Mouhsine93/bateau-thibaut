@@ -16,10 +16,22 @@ import '../../../zone-flags';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
+  menuItems = [
+    { label: 'Accueil', route: 'home' },
+    { label: 'Produits', route: 'produits' },
+    { label: 'Bateaux', route: 'bateaux' },
+    { label: 'Restaurants', route: 'restaurants' },
+    { label: 'Recettes', route: 'recettes' },
+    { label: 'Contact', route: 'contact' },
+  ];
   cart: Product[] = [];
   products: Product[] = [];
   cartItemCount!: BehaviorSubject<number>;
+
+  onMenuButtonClick() {
+    // Implémentez le code que vous souhaitez exécuter lors du clic sur le bouton du menu
+    // Par exemple, vous pouvez ouvrir le menu ici
+  }
 
   @ViewChild('cart', { static: false, read: ElementRef })
   fab!: ElementRef;
@@ -28,7 +40,12 @@ export class HeaderComponent implements OnInit {
   @Input() color: string = 'primary';
   @Input() isModal: boolean = false;
   @Input() isDetails: boolean = false;
-  constructor(private cartService: CartService, private modalCtrl: ModalController, private data: DataService, private router: Router) { }
+  constructor(
+    private cartService: CartService,
+    private modalCtrl: ModalController,
+    private data: DataService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.products = this.cartService.getProducts();
@@ -36,7 +53,7 @@ export class HeaderComponent implements OnInit {
     this.cartItemCount = this.cartService.getCartItemCount();
   }
   addToCart(product: Product) {
-    console.log(`add ${product.name} to cart`)
+    console.log(`add ${product.name} to cart`);
     this.animateCSS('jello');
     this.cartService.addProduct(product);
   }
@@ -46,7 +63,7 @@ export class HeaderComponent implements OnInit {
 
     const modal = await this.modalCtrl.create({
       component: CartModalPage,
-      cssClass: 'cart-modal'
+      cssClass: 'cart-modal',
     });
     modal.onWillDismiss().then(() => {
       this.fab.nativeElement.classList.remove('animated', 'bounceOutLeft');
@@ -59,7 +76,6 @@ export class HeaderComponent implements OnInit {
   animateCSS(animationName: string, keepAnimated = false) {
     const node = this.fab.nativeElement;
     node.classList.add('animated', animationName);
-
 
     function handleAnimationEnd() {
       if (!keepAnimated) {
@@ -96,7 +112,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['bateaux']);
   }
 
-
   onGoToRecettes() {
     this.router.navigate(['recettes']);
   }
@@ -107,5 +122,26 @@ export class HeaderComponent implements OnInit {
 
   close() {
     this.modalCtrl.dismiss();
+  }
+  navigate(route: string) {
+    this.router.navigate([route]);
+  }
+  getIconName(label: string): string {
+    switch (label.toLowerCase()) {
+      case 'accueil':
+        return 'home';
+      case 'produits':
+        return 'basket';
+      case 'bateaux':
+        return 'boat';
+      case 'restaurants':
+        return 'restaurant';
+      case 'recettes':
+        return 'book';
+      case 'contact':
+        return 'mail';
+      default:
+        return 'help'; // Icône par défaut si le libellé ne correspond à aucun cas
+    }
   }
 }

@@ -11,3 +11,25 @@ ion-button {
   max-width: 600px;
   min-width: 100px;
 }
+
+.social-icon {
+  color: white; /* Couleur par défaut pour une meilleure visibilité sur un fond coloré */
+  font-size: 24px; /* Taille par défaut */
+}
+
+.facebook {
+  color: #3b5998; /* Couleur spécifique à Facebook */
+}
+
+.instagram {
+  color: #bc2a8d; /* Couleur spécifique à Instagram */
+}
+
+.youtube {
+  color: #ff0000; /* Couleur spécifique à YouTube */
+}
+
+.social-icon {
+  font-size: 30px; /* Taille ajustée */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}

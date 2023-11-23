@@ -1,0 +1,37 @@
+/* cart-modal.page.scss */
+
+.checkout-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.checkout-button {
+  background-color: #3498db; /* Bleu clair */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+      background-color: #2980b9; /* Bleu légèrement plus foncé au survol */
+  }
+}
+
+.secondary-button {
+  background-color: #e44d26; /* Orange */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+      background-color: #d9401a; /* Orange légèrement plus foncé au survol */
+  }
+}

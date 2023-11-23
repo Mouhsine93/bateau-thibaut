@@ -1,240 +1,229 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Product {
-  id: number,
-  name: string,
-  category: number,
-  price: number,
-  unit: string,
-  availability: boolean,
-  sale: boolean,
-  discount: number,
-  comments: string,
-  owner: string,
-  amount: number
+  id: number;
+  name: string;
+  category: number;
+  price: number;
+  unit: string;
+  availability: boolean;
+  sale: boolean;
+  discount: number;
+  comments: string;
+  owner: string;
+  amount: number;
 }
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CartService {
+  private cart: Product[] = [];
+  private cartItemCount = new BehaviorSubject(0);
+
   public data: Product[] = [
     {
       id: 12,
-      name: "Aile de raie",
+      name: 'Aile de raie',
       category: 0,
       price: 10.0,
-      unit: "kg",
+      unit: 'kg',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "Pêche à la corde",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Pêche à la corde',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 9,
-      name: "Araignées",
+      name: 'Araignées',
       category: 2,
       price: 7.0,
-      unit: "kg",
+      unit: 'kg',
       availability: false,
       sale: false,
       discount: 0.0,
-      comments: "Hors saison,  pêche aux casiers",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Hors saison,  pêche aux casiers',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 3,
-      name: "Bar de ligne",
+      name: 'Bar de ligne',
       category: 0,
       price: 30.0,
-      unit: "kg",
+      unit: 'kg',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "Plus de 1.5kg le poisson",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Plus de 1.5kg le poisson',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 2,
-      name: "Bar de ligne portion",
+      name: 'Bar de ligne portion',
       category: 0,
       price: 10.0,
-      unit: "pièce",
+      unit: 'pièce',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "Environ 550-700g la pièce",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Environ 550-700g la pièce',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 10,
-      name: "Bouquets cuits",
+      name: 'Bouquets cuits',
       category: 1,
       price: 8.0,
-      unit: "100g",
+      unit: '100g',
       availability: false,
       sale: false,
       discount: 0.0,
       comments: "Hors saison, pêche à l'épuisette",
-      owner: "tig",
-      amount: 0.0
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 1,
-      name: "Filet Bar de ligne",
+      name: 'Filet Bar de ligne',
       category: 0,
       price: 7.0,
-      unit: "2 filets",
+      unit: '2 filets',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "environ 300g",
-      owner: "tig",
-      amount: 0.0
+      comments: 'environ 300g',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 5,
-      name: "Filet Julienne",
+      name: 'Filet Julienne',
       category: 0,
       price: 19.0,
-      unit: "kg",
+      unit: 'kg',
       availability: false,
       sale: false,
       discount: 0.0,
-      comments: "Pêche à la corde",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Pêche à la corde',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 7,
-      name: "Huitres N°2 St Vaast",
+      name: 'Huitres N°2 St Vaast',
       category: 1,
       price: 9.5,
-      unit: "Dz",
+      unit: 'Dz',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "",
-      owner: "tig",
-      amount: 0.0
+      comments: '',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 8,
-      name: "Huitres N°2 St Vaast",
+      name: 'Huitres N°2 St Vaast',
       category: 1,
       price: 38.0,
-      unit: "4 Dz",
+      unit: '4 Dz',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "",
-      owner: "tig",
-      amount: 0.0
+      comments: '',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 13,
-      name: "Huîtres N°2 OR St Vaast",
+      name: 'Huîtres N°2 OR St Vaast',
       category: 1,
       price: 12.0,
-      unit: "Dz",
+      unit: 'Dz',
       availability: true,
       sale: false,
       discount: 0.0,
       comments: "Médaille d'or Salon Agriculture",
-      owner: "tig",
-      amount: 0.0
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 14,
-      name: "Huîtres N°2 OR St Vaast",
+      name: 'Huîtres N°2 OR St Vaast',
       category: 1,
       price: 24.0,
-      unit: "2 Dz",
+      unit: '2 Dz',
       availability: true,
       sale: false,
       discount: 0.0,
       comments: "Médaille d'or salon agriculture",
-      owner: "tig",
-      amount: 0.0
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 15,
-      name: "Huîtres N°2 OR St Vaast",
+      name: 'Huîtres N°2 OR St Vaast',
       category: 1,
       price: 48.0,
-      unit: "4 Dz",
+      unit: '4 Dz',
       availability: true,
       sale: false,
       discount: 0.0,
       comments: "Médaille d'or salon agriculture",
-      owner: "tig",
-      amount: 0.0
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 16,
-      name: "Huîtres N°2 St Vaast",
+      name: 'Huîtres N°2 St Vaast',
       category: 1,
       price: 19.0,
-      unit: "2 Dz",
+      unit: '2 Dz',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "",
-      owner: "tig",
-      amount: 0.0
+      comments: '',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 4,
-      name: "Lieu jaune de ligne",
+      name: 'Lieu jaune de ligne',
       category: 0,
       price: 12.0,
-      unit: "kg",
+      unit: 'kg',
       availability: true,
       sale: false,
       discount: 0.0,
-      comments: "Environ 550-700g la portion",
-      owner: "tig",
-      amount: 0.0
+      comments: 'Environ 550-700g la portion',
+      owner: 'tig',
+      amount: 0.0,
     },
     {
       id: 6,
-      name: "Moules de pêche",
+      name: 'Moules de pêche',
       category: 1,
       price: 7.0,
-      unit: "kg",
+      unit: 'kg',
       availability: true,
       sale: true,
       discount: 5.0,
-      comments: "",
-      owner: "tig",
-      amount: 0.0
-    }
+      comments: '',
+      owner: 'tig',
+      amount: 0.0,
+    },
   ];
 
-  private cart: Product[] = [];
-  private cartItemCount = new BehaviorSubject(0);
-
-  constructor() { }
-
-  getProducts(): Product[] {
-    return this.data;
+  constructor() {
+    // Charger le panier depuis le localStorage au démarrage de l'application
+    this.loadCart();
   }
-
-  getCart(): Product[] {
-    console.log("this.cart: ", this.cart);
-    return this.cart;
-  }
-
-  getCartItemCount(): BehaviorSubject<number> {
-    return this.cartItemCount;
-  }
-
   addProduct(product: Product) {
     let added = false;
     for (let p of this.cart) {
@@ -250,18 +239,24 @@ export class CartService {
       console.log(`product ${product.name} pushed to cart`);
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
+
+    // Sauvegarder le panier après chaque modification
+    this.saveCart();
   }
 
   decreaseProduct(product: Product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
         p.amount -= 1;
-        if (p.amount == 0) {
+        if (p.amount === 0) {
           this.cart.splice(index, 1);
         }
       }
     }
     this.cartItemCount.next(this.cartItemCount.value - 1);
+
+    // Sauvegarder le panier après chaque modification
+    this.saveCart();
   }
 
   removeProduct(product: Product) {
@@ -271,5 +266,50 @@ export class CartService {
         this.cart.splice(index, 1);
       }
     }
+
+    // Sauvegarder le panier après chaque modification
+    this.saveCart();
+  }
+
+  clearCart(): void {
+    // Vide le panier
+    this.cart = [];
+    this.cartItemCount.next(0);
+
+    // Sauvegarder le panier après chaque modification
+    this.saveCart();
+  }
+
+  getProducts(): Product[] {
+    return this.data;
+  }
+
+  getCart(): Product[] {
+    console.log('this.cart: ', this.cart);
+    return this.cart;
+  }
+
+  getCartItemCount(): BehaviorSubject<number> {
+    return this.cartItemCount;
+  }
+
+  // ... (autres méthodes)
+
+  private saveCart() {
+    // Sauvegarder le panier dans le localStorage
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  private loadCart() {
+    // Charger le panier depuis le localStorage
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      this.cart = JSON.parse(savedCart);
+      this.cartItemCount.next(this.calculateCartItemCount());
+    }
+  }
+
+  private calculateCartItemCount(): number {
+    return this.cart.reduce((total, product) => total + product.amount, 0);
   }
 }
