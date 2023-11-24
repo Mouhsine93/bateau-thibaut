@@ -89,7 +89,11 @@
       <option value="Ruche qui dit Oui">Ruche qui dit Oui</option>
     </select>
 
-    <button (click)="provideAddress()" class="secondary-button">
+    <button
+      (click)="provideAddress()"
+      [disabled]="!selectedLocation"
+      class="secondary-button"
+    >
       Valider le point de livraison
     </button>
   </div>

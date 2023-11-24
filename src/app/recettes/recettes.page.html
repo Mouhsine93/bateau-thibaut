@@ -13,11 +13,14 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRecette('Homard')"
+        >
           <ion-card-header>
             <ion-card-title>Homard</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -27,11 +30,14 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRecette('StJacques')"
+        >
           <ion-card-header>
             <ion-card-title>St Jacques</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -45,11 +51,10 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card color="light" fill="outline" (click)="activerRecette('Bar')">
           <ion-card-header>
             <ion-card-title>Bar</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -59,11 +64,14 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRecette('Jacque')"
+        >
           <ion-card-header>
-            <ion-card-title>Tourteau</ion-card-title>
+            <ion-card-title>Jacque</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -73,4 +81,53 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!-- Contenu spécifique à chaque recette -->
+  <ion-card-content *ngIf="isHomard">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/homard.webp"></ion-img>
+        <p><br />Détails sur la recette d'Homard...</p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isStJacques">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/saint jacque.webp"></ion-img>
+        <p><br />Détails sur la recette de St Jacques...</p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isBar">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/bar.webp"></ion-img>
+        <p><br />Détails sur la recette de Bar...</p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isJacque">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/jacque.jpg"></ion-img>
+        <p><br />Détails sur la recette de Jacque...</p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 </ion-content>
