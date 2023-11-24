@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, Product } from 'src/app/services/cart.service';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,31 +11,42 @@ import { Router } from '@angular/router';
 export class CartModalPage implements OnInit {
   cart: Product[] = [];
   addressProvided: boolean = false;
+  selectedLocation: string = '';
+  showCartButton: boolean = true;
+  showLocationDropdown: boolean = false;
+  showCheckoutButton: boolean = false;
 
   constructor(
     private cartService: CartService,
     private modalCtrl: ModalController,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {}
 
   provideAddress(): void {
-    // Logique pour fournir l'adresse
-    // Cette méthode peut inclure l'affichage d'un formulaire pour saisir l'adresse, etc.
-    // Une fois l'adresse fournie, vous pouvez mettre à jour la variable addressProvided
+    this.showLocationDropdown = false;
+    this.showCheckoutButton = true;
     this.addressProvided = true;
   }
 
-  confirmCheckout(): void {
-    // Logique pour confirmer le processus de paiement
-    // ...
+  async confirmCheckout(): Promise<void> {
+    console.log('Panier non vide');
+    const alert = await this.alertController.create({
+      header: 'Commande Validée',
+      message: `Votre commande a été validée avec succès à l'adresse : ${this.selectedLocation}`,
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.cartService.clearCart();
+            this.modalCtrl.dismiss();
+            this.router.navigate(['home']);
+          },
+        },
+      ],
+    });
 
-    // Vider le panier après avoir confirmé le paiement
-    this.cartService.clearCart();
-
-    this.modalCtrl.dismiss();
-
-    // Naviguer vers la page d'accueil
-    this.router.navigate(['home']);
+    await alert.present();
   }
 
   ngOnInit() {
@@ -62,11 +73,21 @@ export class CartModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  checkout(): void {
-    // Logique pour le processus de paiement
-    // ...
+  async checkout(): Promise<void> {
+    // Vérifiez si le panier est vide
+    if (this.cartService.getCart().length === 0) {
+      const errorAlert = await this.alertController.create({
+        header: 'Erreur',
+        message:
+          'Votre panier est vide. Veuillez ajouter des produits avant de valider la commande.',
+        buttons: ['OK'],
+      });
+      await errorAlert.present();
+      return; // Arrêtez la méthode si le panier est vide
+    }
 
-    // Une fois l'adresse fournie, mettez à jour la variable
+    this.showCartButton = false;
+    this.showLocationDropdown = true;
     this.addressProvided = true;
   }
 }

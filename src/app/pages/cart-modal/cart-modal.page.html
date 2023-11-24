@@ -71,22 +71,31 @@
       </ion-item>
     </ion-list>
 
-    <!--button to go to checkout (non-working - code not added)-->
-    <ion-button expand="full" (click)="checkout()">
-      VALIDER MON PANIER
-    </ion-button>
+    <div *ngIf="showCartButton" class="checkout-button-container">
+      <ion-button expand="full" (click)="checkout()">
+        VALIDER MON PANIER
+      </ion-button>
+    </div>
   </div>
 
   <!-- ... Votre contenu précédent ... -->
 
-  <div *ngIf="!addressProvided" class="checkout-button-container">
+  <div *ngIf="showLocationDropdown" class="checkout-button-container">
+    <select [(ngModel)]="selectedLocation" class="location-dropdown">
+      <!-- Ajoutez les options pour les différents points de livraison -->
+      <option value="Bistrot des Gascons">Bistrot des Gascons</option>
+      <option value="Café des Phares">Café des Phares</option>
+      <option value="Le Vert Tulipe">Le Vert Tulipe</option>
+      <option value="Ruche qui dit Oui">Ruche qui dit Oui</option>
+    </select>
+
     <button (click)="provideAddress()" class="secondary-button">
-      Point de livraison
+      Valider le point de livraison
     </button>
   </div>
 
-  <div *ngIf="addressProvided" class="checkout-button-container">
-    <!-- Afficher le bouton "Valider le panier" seulement si l'adresse a été fournie -->
+  <div *ngIf="showCheckoutButton" class="checkout-button-container">
+    <!-- Afficher le bouton "Valider la commande" seulement si l'adresse a été fournie -->
     <button (click)="confirmCheckout()" class="checkout-button">
       Valider la commande
     </button>

@@ -7,10 +7,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurants.page.scss'],
 })
 export class RestaurantsPage implements OnInit {
+  isBistrotdesGascons: boolean = false;
+  isCafedesPhares: boolean = false;
+  isLeVertTulipe: boolean = false;
+  isRuchequiditOui: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  activerRestaurant(restaurant: string) {
+    // Désactive tous les restaurants
+    this.isBistrotdesGascons = false;
+    this.isCafedesPhares = false;
+    this.isLeVertTulipe = false;
+    this.isRuchequiditOui = false;
+
+    // Active le restaurant sélectionné
+    if (restaurant === 'BistrotdesGascons') {
+      this.isBistrotdesGascons = true;
+    } else if (restaurant === 'CafedesPhares') {
+      this.isCafedesPhares = true;
+    } else if (restaurant === 'LeVertTulipe') {
+      this.isLeVertTulipe = true;
+    } else if (restaurant === 'RuchequiditOui') {
+      this.isRuchequiditOui = true;
+    }
   }
 
   onGoToHome() {

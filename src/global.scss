@@ -31,7 +31,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
-    background: url('./assets/ocean.jpg');
+    background: rgb(109, 171, 197);
     font-style: italic;
 
 
@@ -84,14 +84,24 @@ div {
 ion-card {
     margin-top: 3px !important;
     margin-bottom: 3px !important;
-    background: rgba(255, 255, 255, 0.9); /* Couleur blanche avec une opacité de 0.9 (90%) */
+    background: rgb(109, 171, 197); /* Couleur blanche avec une opacité de 0.9 (90%) */
     border: 2px solid #e74c3c;
 }
 
+ion-card {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+  background: rgb(109, 171, 197); /* Couleur blanche avec une opacité de 0.8 (80%) */
+  border: none; /* Vous pouvez ajuster cela selon vos besoins */
+}
+ion-card,
+ion-card-header {
+background: rgb(146, 195, 216);
+}
 
 ion-content,
 ion-menu {
-  --background: url('../src/assets/ocean.jpg') no-repeat center center / cover;
+  --background:rgb(109, 171, 197) no-repeat center center / cover;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
   color: black;
@@ -112,12 +122,7 @@ ion-button:hover {
   background-color: rgba(192, 57, 43, 0.5) /* Rouge plus foncé au survol, remplacez par la couleur de votre choix */
 }
 
-ion-card {
-  margin-top: 3px !important;
-  margin-bottom: 3px !important;
-  background: rgba(255, 255, 255, 0); /* Couleur blanche avec une opacité de 0.8 (80%) */
-  border: none; /* Vous pouvez ajuster cela selon vos besoins */
-}
+
 
 
 ion-menu::part(backdrop) {

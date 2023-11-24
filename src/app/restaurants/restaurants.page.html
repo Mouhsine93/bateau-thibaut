@@ -13,11 +13,14 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRestaurant('BistrotdesGascons')"
+        >
           <ion-card-header>
             <ion-card-title>Bistrot des Gascons</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -27,11 +30,14 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRestaurant('CafedesPhares')"
+        >
           <ion-card-header>
-            <ion-card-title>Les fous de l'Île</ion-card-title>
+            <ion-card-title>Café des Phares</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -45,11 +51,14 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRestaurant('LeVertTulipe')"
+        >
           <ion-card-header>
-            <ion-card-title>Bistrot Landais</ion-card-title>
+            <ion-card-title>Le Vert Tulipe</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -59,11 +68,14 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card
+          color="light"
+          fill="outline"
+          (click)="activerRestaurant('RuchequiditOui')"
+        >
           <ion-card-header>
-            <ion-card-title>Villa 9-Trois</ion-card-title>
+            <ion-card-title>Ruche qui dit Oui</ion-card-title>
           </ion-card-header>
-
           <ion-card-content>
             <ion-button fill="outline">
               <ion-icon name="restaurant-outline"></ion-icon>
@@ -74,35 +86,68 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
-          <ion-card-header>
-            <ion-card-title>Bistrot du Sommelier</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
-            <ion-button fill="outline">
-              <ion-icon name="restaurant-outline"></ion-icon>
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
-          <ion-card-header>
-            <ion-card-title>Devenez partenaire!</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
-            <ion-button fill="outline">
-              <ion-icon name="restaurant-outline"></ion-icon>
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
+  <ion-card-content *ngIf="isBistrotdesGascons">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/lebistrotdesgascons.jpg"></ion-img>
+        <p>
+          <br />Brasserie chic et sobre servant des omelettes, des salades, et
+          des plats typiques de viande ou poisson. Tables sur le trottoir.
+        </p>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isCafedesPhares">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/cafedesphares.jpg"></ion-img>
+        <p>
+          <br />Brasserie classique à l'ambiance détendue dotée d'une terrasse,
+          proposant des plats, des salades et des apéritifs traditionnels.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isLeVertTulipe">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/vert-tulipe.jpg"></ion-img>
+        <p>
+          <br />Restaurant à l'ambiance décontractée et chaleureuse, avec
+          service en continu et large choix de vins.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isRuchequiditOui">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/laruchequiditoui.jpg"></ion-img>
+        <p>
+          <br />Quelle entreprise se trouve derrière ce nom étrange de la Ruche
+          qui dit Oui ! ? Asseyez-vous et laissez-vous conter notre histoire qui
+          a commencé en 2011. Il est possible aussi de vous résumer la Ruche en
+          chiffres ou de vous présenter ses valeurs en lettres si vous êtes
+          pressés. Mais avant tout, nous avons quelque chose à vous révéler : la
+          Ruche qui dit Oui! est une formidable aventure humaine. À ce propos,
+          vous connaissez notre équipe ?
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 </ion-content>

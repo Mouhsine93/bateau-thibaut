@@ -13,7 +13,7 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card color="light" fill="outline" (click)="activerDeLaBrise()">
           <ion-card-header>
             <ion-card-title>De la Brise</ion-card-title>
           </ion-card-header>
@@ -27,7 +27,7 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card color="light" fill="outline" (click)="activerSaphir()">
           <ion-card-header>
             <ion-card-title>Saphir</ion-card-title>
           </ion-card-header>
@@ -45,9 +45,9 @@
   <ion-grid>
     <ion-row>
       <ion-col push-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card color="light" fill="outline" (click)="activerLePenelope()">
           <ion-card-header>
-            <ion-card-title>Gast Micher</ion-card-title>
+            <ion-card-title>Le Pénélope</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
@@ -59,9 +59,9 @@
       </ion-col>
 
       <ion-col pull-sm="6">
-        <ion-card color="light" fill="outline">
+        <ion-card color="light" fill="outline" (click)="activerLesPassionnes()">
           <ion-card-header>
-            <ion-card-title>Aquilon</ion-card-title>
+            <ion-card-title>Les Passionnés</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
@@ -73,4 +73,81 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!--fab button at top right that opens shopping cart-->
+
+  <!-- list of products in 2 columns: product name and price, add icon -->
+
+  <ion-card-content *ngIf="isDeLaBrise">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/delabrise.jpg"></ion-img>
+        <p>
+          <br />Voici le bateau "De la Brise" de Jérome avec lequel nous
+          travaillons; qui assure un bon pourcentage de la pêche des produits
+          que nous vous proposons à la livraison. Le reste des produits sont
+          achetés à la criée de Cherbourg à d'autres bateaux pratiquant la peche
+          artisanale.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isSaphir">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/saphir.png"></ion-img>
+        <p>
+          <br />Voici le bateau "Le Saphir" de mon oncle Jean-Pierre avec lequel
+          nous travaillons; qui assure un bon pourcentage de la pêche des
+          produits que nous vous proposons à la livraison. Le reste des produits
+          sont achetés à la criée de Cherbourg à d'autres bateaux pratiquant la
+          peche artisanale.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isLePenelope">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/Pénélope.jpg"></ion-img>
+        <p>
+          <br />
+          Voici le bateau "Le Pénélope" de Yann avec lequel nous travaillons;
+          qui assure un bon pourcentage de la pêche des produits que nous vous
+          proposons à la livraison. Le reste des produits sont achetés à la
+          criée de Cherbourg à d'autres bateaux pratiquant la peche artisanale.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="isLesPassionnes">
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="width: 100%"
+    >
+      <ion-col size="8">
+        <ion-img src="./../../assets/passionnés.jpg"></ion-img>
+        <p>
+          <br />
+          Voici le bateau "Les Passionnés" de Ludovic avec lequel nous
+          travaillons; qui assure un bon pourcentage de la pêche des produits
+          que nous vous proposons à la livraison. Le reste des produits sont
+          achetés à la criée de Cherbourg à d'autres bateaux pratiquant la peche
+          artisanale.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 </ion-content>
